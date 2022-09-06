@@ -1,4 +1,4 @@
-name: image_progression_example
+name: flutter_image_progression_example
 description: Image Progression Package example app.
 
 publish_to: "none"
@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  image_progression:
+  flutter_image_progression:
     path: ../
 
 dev_dependencies:
