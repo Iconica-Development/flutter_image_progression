@@ -1,0 +1,19 @@
+name: image_progression
+description: Progression widget with a list of images with different steps drawn on top of eachother.
+version: 0.0.1
+homepage: https://github.com/Iconica-Development/images_progression
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
