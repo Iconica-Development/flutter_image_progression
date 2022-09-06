@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:image_progression/image_progression.dart';
+import 'package:flutter_image_progression/flutter_image_progression.dart';
 
 void main() {
   runApp(const MaterialApp(home: ImageProgressionDemo()));
@@ -39,8 +39,17 @@ class _ImageProgressionDemoState extends State<ImageProgressionDemo> {
                     const ImageProgress(
                       image: AssetImage('assets/container_vol.png'),
                     ),
+                    ImageProgress(
+                      image: const AssetImage(
+                        'assets/Vuilniszakken.png',
+                      ),
+                      offset: Offset(
+                        0,
+                        MediaQuery.of(context).size.height * 0.1,
+                      ),
+                    ),
                   ],
-                  stops: [0.0, 1.0],
+                  stops: [0.0, 0.7, 1.0],
                 ),
               ),
             ),
