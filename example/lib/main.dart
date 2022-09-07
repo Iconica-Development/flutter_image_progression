@@ -33,6 +33,7 @@ class _ImageProgressionDemoState extends State<ImageProgressionDemo> {
                       image: AssetImage('assets/container_leeg.png'),
                     ),
                     const ImageProgress(
+                      startImage: 0.5,
                       image: AssetImage('assets/container_vol.png'),
                     ),
                     const ImageProgress(

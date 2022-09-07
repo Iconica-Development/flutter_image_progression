@@ -144,11 +144,17 @@ class ImageProgression extends StatelessWidget {
   }
 
   double _getPartialImagePercentage() {
+    var partialImage = images[_getAmountOfDisplayedImages()];
     var upperbound =
         stops[min(max(_getAmountOfDisplayedImages(), 0), images.length - 1)];
     var lowerbound = stops[
         min(max(_getAmountOfDisplayedImages() - 1, 0), images.length - 1)];
-    return (progress - lowerbound) / (upperbound - lowerbound);
+    var division = (progress - lowerbound) / (upperbound - lowerbound);
+    // now get the percentage of the image that should be displayed
+    // give possible lower and upper image start
+    var percentage = partialImage.startImage +
+        division * (partialImage.endImage - partialImage.startImage);
+    return percentage;
   }
 
   int _getAmountOfDisplayedImages() {
