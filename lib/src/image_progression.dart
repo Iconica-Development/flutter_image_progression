@@ -34,49 +34,107 @@ class ImageProgression extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(freek): add support for depth system
     var amountOfDisplayedImages = _getAmountOfDisplayedImages();
+    int? currentProgressedImage;
+    if (_isPartialImage(amountOfDisplayedImages)) {
+      currentProgressedImage = amountOfDisplayedImages;
+    }
+
+    var imagesWithoutDepth = images
+        .sublist(
+          0,
+          amountOfDisplayedImages +
+              ((currentProgressedImage != null &&
+                      images[currentProgressedImage].depth == null)
+                  ? 1
+                  : 0),
+        )
+        .where((image) => image.depth == null)
+        .toList(growable: false);
+    var imagesWithCustomDepth = images
+        .sublist(
+          0,
+          amountOfDisplayedImages +
+              ((currentProgressedImage != null &&
+                      images[currentProgressedImage].depth != null)
+                  ? 1
+                  : 0),
+        )
+        .where((image) => image.depth != null)
+        .toList(growable: false);
     return Stack(
       children: [
-        for (var i = 0; i < amountOfDisplayedImages; i++) ...[
-          Padding(
-            padding: EdgeInsets.only(
-              bottom: images[i].offset.dy,
-              left: images[i].offset.dx,
+        for (var i = 0;
+            i <
+                amountOfDisplayedImages +
+                    (currentProgressedImage == null ? 0 : 1);
+            i++) ...[
+          _buildImage(
+            context,
+            imagesWithCustomDepth.firstWhere(
+              (element) => element.depth == i,
+              orElse: () => imagesWithoutDepth[i -
+                  (imagesWithCustomDepth
+                      .where((element) => element.depth! <= i)
+                      .length)],
             ),
+            currentProgressedImage ==
+                images.indexOf(
+                  imagesWithCustomDepth.firstWhere(
+                    (element) => element.depth == i,
+                    orElse: () => imagesWithoutDepth[i -
+                        (imagesWithCustomDepth
+                            .where((element) => element.depth! <= i)
+                            .length)],
+                  ),
+                ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildImage(
+    BuildContext context,
+    ImageProgress image,
+    bool isPartialImage,
+  ) {
+    if (isPartialImage) {
+      // show partial percentage of the image coming from the bottom
+      return Align(
+        alignment: Alignment.bottomCenter,
+        child: Padding(
+          padding: EdgeInsets.only(
+            bottom: image.offset.dy,
+            left: image.offset.dx,
+          ),
+          child: ClipRect(
             child: Align(
               alignment: Alignment.bottomCenter,
+              heightFactor: _getPartialImagePercentage(),
               child: Image(
-                image: images[i].image,
+                image: image.image,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-        ],
-        if (_isPartialImage(amountOfDisplayedImages)) ...[
-          // show partial percentage of the image coming from the bottom
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: images[amountOfDisplayedImages].offset.dy,
-                left: images[amountOfDisplayedImages].offset.dx,
-              ),
-              child: ClipRect(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  heightFactor: _getPartialImagePercentage(),
-                  child: Image(
-                    image: images[amountOfDisplayedImages].image,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
+        ),
+      );
+    } else {
+      return Padding(
+        padding: EdgeInsets.only(
+          bottom: image.offset.dy,
+          left: image.offset.dx,
+        ),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Image(
+            image: image.image,
+            fit: BoxFit.cover,
           ),
-        ]
-      ],
-    );
+        ),
+      );
+    }
   }
 
   /// Checks if there is a partial image displayed
