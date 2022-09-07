@@ -35,14 +35,13 @@ class _ImageProgressionDemoState extends State<ImageProgressionDemo> {
                     const ImageProgress(
                       image: AssetImage('assets/container_vol.png'),
                     ),
-                    ImageProgress(
+                    const ImageProgress(
                       image: const AssetImage(
-                        'assets/Vuilniszakken.png',
+                        'assets/vuilniszakken.png',
                       ),
-                      offset: Offset(
-                        0,
-                        MediaQuery.of(context).size.height * 0.1,
-                      ),
+                      offset: Offset.zero,
+                      depth: 0,
+                      scale: 1.2,
                     ),
                   ],
                   stops: [0.0, 0.7, 1.0],

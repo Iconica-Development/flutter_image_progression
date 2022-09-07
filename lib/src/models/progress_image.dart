@@ -8,6 +8,7 @@ class ImageProgress {
     required this.image,
     this.startImage = 0.0,
     this.endImage = 1.0,
+    this.scale = 1.0,
     this.offset = Offset.zero,
     this.depth,
   });
@@ -20,6 +21,9 @@ class ImageProgress {
 
   /// the percentage of the image that should be displayed from the end
   final double endImage;
+
+  /// Option to scale the image, default is 1.0
+  final double scale;
 
   /// The offset of the image in the [ImageProgression] widget
   final Offset offset;
