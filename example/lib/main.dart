@@ -34,22 +34,46 @@ class _ImageProgressionDemoState extends State<ImageProgressionDemo> {
                   progress: _progress,
                   images: [
                     const ImageProgress(
-                      image: AssetImage('assets/container_leeg.png'),
-                    ),
-                    const ImageProgress(
-                      startImage: 0.5,
-                      image: AssetImage('assets/container_vol.png'),
-                    ),
-                    const ImageProgress(
-                      image: const AssetImage(
-                        'assets/vuilniszakken.png',
+                      image: AssetImage(
+                        'assets/container_empty.png',
                       ),
-                      offset: Offset.zero,
+                    ),
+                    const ImageProgress(
+                      image: AssetImage(
+                        'assets/container_filled.png',
+                      ),
+                      startImage: 0.1,
+                      endImage: 0.8,
+                    ),
+                    const ImageProgress(
+                      image: AssetImage(
+                        'assets/garbage_top.png',
+                      ),
                       depth: 0,
-                      scale: 1.2,
+                      startImage: 1.0,
+                    ),
+                    const ImageProgress(
+                      image: AssetImage(
+                        'assets/garbage_side.png',
+                      ),
+                      depth: 1,
+                      startImage: 1.0,
+                    ),
+                    const ImageProgress(
+                      image: AssetImage(
+                        'assets/garbage_front.png',
+                      ),
+                      depth: 4,
+                      startImage: 1.0,
                     ),
                   ],
-                  stops: [0.0, 0.7, 1.0],
+                  stops: [
+                    0.0,
+                    1 / 7 * 6,
+                    1 / 7 * 6.3,
+                    1 / 7 * 6.6,
+                    1.0,
+                  ],
                 ),
               ),
             ),
