@@ -1,13 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-
-import 'models/progress_image.dart';
+import 'package:flutter_image_progression/src/models/progress_image.dart';
 
 class ImageProgression extends StatelessWidget {
   /// Creates a widget that displays a progression of images
   /// based on the [progress] value.
-  /// The [images] are displayed in the order of the [stops].
+  /// The [images] are displayed order but the depth of each image
+  ///  can be customized.
   /// The [stops] are the values between 0.0 and 1.0 that indicate
   /// when the next image should be displayed.
   const ImageProgression({
@@ -15,9 +15,13 @@ class ImageProgression extends StatelessWidget {
     required this.images,
     required this.stops,
     super.key,
-  }) : assert(
+  })  : assert(
           images.length == stops.length,
           'The length of images and stops should be the same',
+        ),
+        assert(
+          progress >= 0 && progress <= 1,
+          'progress should be within 0 and 1.0',
         );
 
   /// The progress of the images, should be between 0.0 and 1.0
@@ -34,6 +38,7 @@ class ImageProgression extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO(freek): make temporary list of images in their render order
     var amountOfDisplayedImages = _getAmountOfDisplayedImages();
     int? currentProgressedImage;
     if (_isPartialImage(amountOfDisplayedImages)) {
@@ -100,7 +105,6 @@ class ImageProgression extends StatelessWidget {
     bool isPartialImage,
   ) {
     if (isPartialImage) {
-      // show partial percentage of the image coming from the bottom
       return Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
@@ -115,6 +119,8 @@ class ImageProgression extends StatelessWidget {
               child: Image(
                 image: image.image,
                 fit: BoxFit.cover,
+                color: image.colorFilter,
+                colorBlendMode: BlendMode.modulate,
               ),
             ),
           ),
@@ -131,6 +137,8 @@ class ImageProgression extends StatelessWidget {
           child: Image(
             image: image.image,
             fit: BoxFit.cover,
+            color: image.colorFilter,
+            colorBlendMode: BlendMode.modulate,
           ),
         ),
       );
@@ -143,6 +151,7 @@ class ImageProgression extends StatelessWidget {
         progress;
   }
 
+  // get the percentage of the image that should be displayed
   double _getPartialImagePercentage() {
     var partialImage = images[_getAmountOfDisplayedImages()];
     var upperbound =
