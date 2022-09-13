@@ -8,26 +8,31 @@ class ImageProgress {
     required this.image,
     this.startImage = 0.0,
     this.endImage = 1.0,
-    this.scale = 1.0,
     this.offset = Offset.zero,
     this.depth,
+    this.colorFilter,
   });
 
   /// The image to be displayed
   final ImageProvider<Object> image;
 
   /// The percentage of the image that should be displayed from the start
+  /// 0.1 means first 10% of the image will immediately be displayed
   final double startImage;
 
   /// the percentage of the image that should be displayed from the end
+  /// 0.6 means the progression goes from start to 60% of the image
   final double endImage;
 
-  /// Option to scale the image, default is 1.0
-  final double scale;
-
   /// The offset of the image in the [ImageProgression] widget
+  /// offset is from the bottom left corner of the widget
   final Offset offset;
 
   /// Optional depth to indicate the order of the images
+  /// The image with the highest depth will be displayed on top
+  /// If no depth is specified, the order of the images will be the index
   final int? depth;
+
+  /// Optional color to add opacity to the image
+  final Color? colorFilter;
 }
