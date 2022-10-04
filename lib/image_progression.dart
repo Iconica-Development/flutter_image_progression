@@ -1,1 +1,0 @@
-library image_progression;

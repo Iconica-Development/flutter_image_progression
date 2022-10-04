@@ -1,19 +1,19 @@
-name: image_progression_example
+name: flutter_image_progression_example
 description: Image Progression Package example app.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  image_progression:
+  flutter_image_progression:
     path: ../
 
 dev_dependencies:
@@ -24,3 +24,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
