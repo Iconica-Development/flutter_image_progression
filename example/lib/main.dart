@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 Iconica
+// SPDX-FileCopyrightText: 2023 Iconica
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -10,7 +10,7 @@ void main() {
 }
 
 class ImageProgressionDemo extends StatefulWidget {
-  const ImageProgressionDemo({Key? key}) : super(key: key);
+  const ImageProgressionDemo({super.key});
 
   @override
   State<ImageProgressionDemo> createState() => _ImageProgressionDemoState();
@@ -32,34 +32,34 @@ class _ImageProgressionDemoState extends State<ImageProgressionDemo> {
                 height: MediaQuery.of(context).size.height * 0.7,
                 child: ImageProgression(
                   progress: _progress,
-                  images: [
-                    const ImageProgress(
+                  images: const [
+                    ImageProgress(
                       image: AssetImage(
                         'assets/container_empty.png',
                       ),
                     ),
-                    const ImageProgress(
+                    ImageProgress(
                       image: AssetImage(
                         'assets/container_filled.png',
                       ),
                       startImage: 0.1,
                       endImage: 0.8,
                     ),
-                    const ImageProgress(
+                    ImageProgress(
                       image: AssetImage(
                         'assets/garbage_top.png',
                       ),
                       depth: 0,
                       startImage: 1.0,
                     ),
-                    const ImageProgress(
+                    ImageProgress(
                       image: AssetImage(
                         'assets/garbage_side.png',
                       ),
                       depth: 1,
                       startImage: 1.0,
                     ),
-                    const ImageProgress(
+                    ImageProgress(
                       image: AssetImage(
                         'assets/garbage_front.png',
                       ),
@@ -67,7 +67,7 @@ class _ImageProgressionDemoState extends State<ImageProgressionDemo> {
                       startImage: 1.0,
                     ),
                   ],
-                  stops: [
+                  stops: const [
                     0.0,
                     1 / 7 * 6,
                     1 / 7 * 6.3,

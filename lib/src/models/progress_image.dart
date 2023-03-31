@@ -1,5 +1,10 @@
+// SPDX-FileCopyrightText: 2023 Iconica
+//
+// SPDX-License-Identifier: BSD-3-Clause
+
 import 'package:flutter/material.dart';
 
+@immutable
 class ImageProgress {
   /// Model for a single image in the progression
   /// With [startImage] and [endImage] you can specify which range of the image
@@ -35,4 +40,22 @@ class ImageProgress {
 
   /// Optional color to add opacity to the image
   final Color? colorFilter;
+
+  ImageProgress copyWith({
+    ImageProvider<Object>? image,
+    double? startImage,
+    double? endImage,
+    Offset? offset,
+    int? depth,
+    Color? colorFilter,
+  }) {
+    return ImageProgress(
+      image: image ?? this.image,
+      startImage: startImage ?? this.startImage,
+      endImage: endImage ?? this.endImage,
+      offset: offset ?? this.offset,
+      depth: depth ?? this.depth,
+      colorFilter: colorFilter ?? this.colorFilter,
+    );
+  }
 }
