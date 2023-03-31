@@ -1,10 +1,12 @@
-[![pub package](https://img.shields.io/pub/v/[PACKAGE NAME ON PUB].svg)](https://github.com/Iconica-Development) [![Build status](URL TO REPO)](URL TO GITHUB ACTIONS) [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart) 
+[![pub package](https://img.shields.io/pub/v/flutter_image_progression.svg)](https://github.com/Iconica-Development) [![Build status](https://img.shields.io/github/workflow/status/Iconica-Development/flutter_image_progression/CI)](https://github.com/Iconica-Development/flutter_image_progression/actions/new) [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart) 
 
-# flutter_image_progression
+# Flutter Image Progression
 
 This package allows you to overlay multiple images on top of eachother and show partial images based on a progression value. Complex effects can be achieved by using multiple images and setting the progression value to a value between 0 and 1. This is for instance useful for showing a progress bar or a loading animation.
 
 Supports all Flutter platforms.
+
+![Image Progression GIF](flutter_image_progression.gif)
 
 ## Usage
 
