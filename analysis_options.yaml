@@ -1,11 +1,4 @@
-include: package:flutter_iconica_analysis/analysis_options.yaml
+include: package:flutter_lints/flutter.yaml
 
-# https://dart-lang.github.io/linter/lints/index.html
-
-# Possible to overwrite the rules from the package
-
-analyzer:
-  exclude:
-
-linter:
-  rules:
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options

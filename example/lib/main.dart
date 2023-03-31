@@ -6,7 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_progression/flutter_image_progression.dart';
 
 void main() {
-  runApp(const MaterialApp(home: ImageProgressionDemo()));
+  runApp(
+    const MaterialApp(
+      home: ImageProgressionDemo(),
+    ),
+  );
 }
 
 class ImageProgressionDemo extends StatefulWidget {
