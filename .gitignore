@@ -30,3 +30,10 @@ migrate_working_dir/
 build/
 
 coverage/
+
+example/ios/
+example/anroid/
+example/web/
+example/linux/
+example/macos/
+example/windows/

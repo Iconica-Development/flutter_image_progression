@@ -1,3 +1,3 @@
-## [0.0.1] - 6 September 2022
+## [0.0.1] - 31 March 2023
 
 * Initial release.
