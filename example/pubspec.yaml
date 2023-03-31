@@ -6,12 +6,11 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.19.2 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
   cupertino_icons: ^1.0.2
   flutter_image_progression:
     path: ../
