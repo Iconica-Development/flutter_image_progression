@@ -48,14 +48,13 @@ class ImageProgress {
     Offset? offset,
     int? depth,
     Color? colorFilter,
-  }) {
-    return ImageProgress(
-      image: image ?? this.image,
-      startImage: startImage ?? this.startImage,
-      endImage: endImage ?? this.endImage,
-      offset: offset ?? this.offset,
-      depth: depth ?? this.depth,
-      colorFilter: colorFilter ?? this.colorFilter,
-    );
-  }
+  }) =>
+      ImageProgress(
+        image: image ?? this.image,
+        startImage: startImage ?? this.startImage,
+        endImage: endImage ?? this.endImage,
+        offset: offset ?? this.offset,
+        depth: depth ?? this.depth,
+        colorFilter: colorFilter ?? this.colorFilter,
+      );
 }

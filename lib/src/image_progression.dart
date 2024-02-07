@@ -150,10 +150,9 @@ class ImageProgression extends StatelessWidget {
   }
 
   /// Checks if there is a partial image displayed
-  bool _isPartialImage(int amountOfDisplayedImages) {
-    return stops[min(max(amountOfDisplayedImages - 1, 0), images.length - 1)] <
-        progress;
-  }
+  bool _isPartialImage(int amountOfDisplayedImages) =>
+      stops[min(max(amountOfDisplayedImages - 1, 0), images.length - 1)] <
+      progress;
 
   // get the percentage of the image that should be displayed
   double _getPartialImagePercentage() {
